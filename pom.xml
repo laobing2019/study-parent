@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sprg</groupId>
+    <artifactId>study-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>study-api</module>
+        <module>study-service</module>
+        <module>study-dba</module>
+        <module>study-oo</module>
+    </modules>
+
+    <properties>
+        <spring-version>4.3.11.RELEASE</spring-version>
+        <servlet-version>3.1.0</servlet-version>
+        <log4j-version>1.2.17</log4j-version>
+        <slf4j-log4j12-version>1.7.9</slf4j-log4j12-version>
+        <slf4j-api-version>1.7.9</slf4j-api-version>
+        <junit-version>4.12</junit-version>
+    </properties>
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-eureka-server</artifactId>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <id>bwc-repositories</id>
+            <url>http://120.132.92.5:8081/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <repository>
+            <id>bwc-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://120.132.92.5:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>bwc-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://120.132.92.5:8081/nexus/content/repositories/snapshots/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
